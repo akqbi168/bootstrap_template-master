@@ -11,6 +11,6 @@ Rails.application.routes.draw do
       # post_commentsのshowページは必要ない（コメントの詳細ページは作成しない）ため、idを受け渡す必要がなくresourceとしています
   end
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :edit]
 
 end
