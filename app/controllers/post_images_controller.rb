@@ -7,12 +7,17 @@ class PostImagesController < ApplicationController
 	def create
 		@post_image = PostImage.new(post_image_params)
 		@post_image.user_id = current_user.id
-		@post_image.save
-		redirect_to post_images_path
+		if @post_image.save
+			redirect_to post_images_path
+		else
+			render :new
+		end
 	end
 
 	def index
-		@post_images = PostImage.all
+		# @post_images = PostImage.all
+		# allではなく、1ページ分の決められた数のデータを新しい順に取得
+		@post_images = PostImage.page(params[:page]).reverse_order
 	end
 
 	def show

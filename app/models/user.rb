@@ -8,5 +8,6 @@ class User < ApplicationRecord
     # dependent: :destroyは、1:Nの関係の1のデータが削除されると関連するNのデータも削除される設定
     has_many :post_images, dependent: :destroy
 	has_many :post_comments, dependent: :destroy
+	has_many :favorites, dependent: :destroy
 
 end
